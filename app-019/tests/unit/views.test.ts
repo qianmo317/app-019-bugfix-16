@@ -70,7 +70,7 @@ describe('切割清单', () => {
     it(`${kind}: A/B 两件步骤非空且有序`, () => {
       const joint = makeJoint(kind)
       const r = computeJoint(joint)
-      const cut = buildCutList(joint, r.dovetail, r.tenon)
+      const cut = buildCutList(joint, r)
       expect(cut.boardA.length).toBeGreaterThan(0)
       expect(cut.boardB.length).toBeGreaterThan(0)
       expect(cut.boardA.map((s) => s.no)).toEqual(cut.boardA.map((s) => s.no).sort((a, b) => a - b))

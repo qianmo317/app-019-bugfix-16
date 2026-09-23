@@ -4,7 +4,7 @@ import type { Joint, JointKind } from '../types'
 import type { DovetailResult } from '../lib/dovetail'
 import type { TenonResult } from '../lib/tenon'
 import type { LapResult, DowelResult, PanelResult } from '../lib/joints'
-import { fmtDrawing } from '../lib/format'
+import { fmtDrawing, fmt01 } from '../lib/format'
 
 export type ViewId = 'front' | 'top' | 'side'
 
@@ -182,7 +182,7 @@ function tenonViews(p: Joint['params'], tn: TenonResult): ViewModel[] {
   hdim(front, mx, mx + tw, my - 8, `眼宽 ${fmtDrawing(tw)}`)
   vdim(front, my, my + Math.min(tl, tB - my), Wb + 12, `眼深 ${fmtDrawing(Math.min(tl, tB))}`)
   hdim(front, 0, mx, tB + 24, `边距 ${fmtDrawing(mx)}`)
-  front.texts.push({ x: 0, y: tB + 36, text: `榫厚 ${fmtDrawing(tt)}（含配合），锯切线内收 ${fmtDrawing(tn.mortiseSawOffset)} 补偿 kerf`, anchor: 'start', cls: 'note' })
+  front.texts.push({ x: 0, y: tB + 36, text: `榫厚 ${fmtDrawing(tt)}（含配合），锯切线内收 ${fmt01(tn.mortiseSawOffset)} 补偿 kerf`, anchor: 'start', cls: 'note' })
 
   // 俯视图：榫舌板俯视（板宽 × 厚+榫长）
   const th = ta + tl + 6

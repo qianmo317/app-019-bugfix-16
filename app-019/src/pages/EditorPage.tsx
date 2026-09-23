@@ -25,7 +25,7 @@ export function EditorPage({ id }: { id: string }) {
     const r = computeJoint(plan.joints[0])
     const views = buildViews(plan.joints[0], r)
     recalcMs.current = performance.now() - t0
-    return { result: r, views, cut: buildCutList(plan.joints[0], r.dovetail, r.tenon) }
+    return { result: r, views, cut: buildCutList(plan.joints[0], r) }
   }, [plan, savedTick])
 
   if (!plan) {
@@ -288,7 +288,7 @@ export function PrintPage({ id }: { id: string }) {
       </section>
       <section className="print-section">
         <h2>切割步骤</h2>
-        <CutSteps cut={buildCutList(joint, r.dovetail, r.tenon)} />
+        <CutSteps cut={buildCutList(joint, r)} />
       </section>
     </div>
   )
